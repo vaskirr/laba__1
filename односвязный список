@@ -1,0 +1,63 @@
+data class Node(val value: Any?) {
+    var next: Node? = null
+}
+
+class linkedlist {
+
+    private var head: Node? = null
+    private var tail: Node? = null
+    private var lenght: Int = 0
+    fun add(value: Any?) {
+        val node = Node(value)
+        if (head == null) {
+            head = node
+            tail = node
+        } else {
+            tail?.next = node
+            tail = node
+        }
+        lenght++
+
+    }
+    fun isEmpty(): Boolean {
+        return head == null
+    }
+
+    fun printlist() {
+        var currentnode: Node? = head
+        while (currentnode != null) {
+            print("${currentnode.value} ")
+            currentnode = currentnode.next
+        }
+    }
+
+    fun set(){
+    }
+    fun contains(value: Any?): Boolean = indexOf(value) != -1
+
+    fun indexOf(value: Any?): Int {
+        if (isEmpty()) return -1
+        var currentNode: Node? = head
+        var i: Int = 0
+        while (currentNode != null) {
+            if (currentNode.value== value) return i
+            i++
+            currentNode = currentNode.next
+
+        }
+        return -1
+    }
+
+    fun remove(value: Any?) {
+         }
+}
+
+
+fun main() {
+    val a = linkedlist()
+    a.add("hello")
+    a.add("world")
+    a.add("123")
+    a.add("a")
+    a.printlist()
+}
